@@ -1,6 +1,7 @@
 package com.example.weatherapp.root
 
 import android.app.Application
+import com.example.weatherapp5.weatherdetail.entity.currentweather.CurrentWeatherModule
 
 class App: Application() {
 
@@ -10,6 +11,7 @@ class App: Application() {
         super.onCreate()
 
         component = DaggerApplicationComponent.builder()
+            .currentWeatherModule(CurrentWeatherModule())
             .build()
     }
 
