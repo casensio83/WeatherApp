@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 const val BASE_URL = "https://api.openweathermap.org/data/2.5/"
 
 @Module
-class CurrentWeatherModule {
+class WeatherApiServiceModule {
 
     @Provides
     fun provideHttpClient(): OkHttpClient {

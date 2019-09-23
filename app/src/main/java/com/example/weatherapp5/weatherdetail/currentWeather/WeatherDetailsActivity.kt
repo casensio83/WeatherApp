@@ -15,7 +15,7 @@ class WeatherDetailsActivity : AppCompatActivity(), CurrentWeatherMVP.View {
     @Inject
     lateinit var weatherAPI: WeatherAPIService
 
-    //@Inject
+    @Inject
     lateinit var presenter: CurrentWeatherMVP.Presenter
 
     private lateinit var lookForCity: String
@@ -27,11 +27,8 @@ class WeatherDetailsActivity : AppCompatActivity(), CurrentWeatherMVP.View {
 
         (application as App).getComponent().inject(this)
 
-        presenter = CurrentWeatherPresenter(CurrentWeatherModel())
-
         lookForCity = intent.getStringExtra(LocationAdapter.EXTRA_CITY_DETAILS)
         lookForCountry = intent.getStringExtra(LocationAdapter.EXTRA_COUNTRY_DETAILS)
-
 
     }
 
