@@ -1,5 +1,6 @@
 package com.example.weatherapp5.weatherdetail.currentWeather
 
+import com.example.weatherapp5.http.WeatherAPIService
 import dagger.Module
 import dagger.Provides
 
@@ -12,7 +13,12 @@ class CurrentWeatherModule {
     }
 
     @Provides
-    fun provideCurrentWeatherModel(): CurrentWeatherMVP.Model {
-        return CurrentWeatherModel()
+    fun provideCurrentWeatherModel(repository: CurrentWeatherRepository): CurrentWeatherMVP.Model {
+        return CurrentWeatherModel(repository)
+    }
+
+    @Provides
+    fun provideCurrentWeatherRepository(weatherAPIService: WeatherAPIService): CurrentWeatherRepository {
+        return CurrentWeatherRepositoryImpl(weatherAPIService)
     }
 }
