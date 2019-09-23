@@ -1,4 +1,4 @@
-package com.example.weatherapp5.weatherdetail.entity
+package com.example.weatherapp5.weatherdetail
 
 data class WeatherEntity(
     val city: String?,

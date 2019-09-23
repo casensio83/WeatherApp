@@ -2,7 +2,7 @@ package com.example.weatherapp5.weatherdetail.currentWeather
 
 import com.example.weatherapp5.http.WeatherAPIService
 import com.example.weatherapp5.weatherdetail.currentWeather.entity.WeatherResult
-import com.example.weatherapp5.weatherdetail.entity.WeatherEntity
+import com.example.weatherapp5.weatherdetail.WeatherEntity
 import retrofit2.Call
 
 interface CurrentWeatherMVP {

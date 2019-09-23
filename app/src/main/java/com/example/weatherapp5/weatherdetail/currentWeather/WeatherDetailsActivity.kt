@@ -6,7 +6,7 @@ import com.example.weatherapp.root.App
 import com.example.weatherapp4.home.LocationAdapter
 import com.example.weatherapp5.R
 import com.example.weatherapp5.http.WeatherAPIService
-import com.example.weatherapp5.weatherdetail.entity.WeatherEntity
+import com.example.weatherapp5.weatherdetail.WeatherEntity
 import kotlinx.android.synthetic.main.activity_weather_details.*
 import javax.inject.Inject
 
