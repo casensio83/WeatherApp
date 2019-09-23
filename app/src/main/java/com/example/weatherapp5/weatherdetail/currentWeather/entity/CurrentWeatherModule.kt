@@ -1,4 +1,4 @@
-package com.example.weatherapp5.weatherdetail.entity.currentweather
+package com.example.weatherapp5.weatherdetail.currentWeather.entity
 
 import com.example.weatherapp5.http.WeatherAPIService
 import dagger.Module

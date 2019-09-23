@@ -1,7 +1,7 @@
 package com.example.weatherapp.root
 
 import android.app.Application
-import com.example.weatherapp5.weatherdetail.entity.currentweather.CurrentWeatherModule
+import com.example.weatherapp5.weatherdetail.currentWeather.entity.CurrentWeatherModule
 
 class App: Application() {
 

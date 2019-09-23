@@ -1,7 +1,9 @@
-package com.example.weatherapp5.weatherdetail
+package com.example.weatherapp5.weatherdetail.currentWeather
 
 import com.example.weatherapp5.http.WeatherAPIService
+import com.example.weatherapp5.weatherdetail.currentWeather.entity.WeatherResult
 import com.example.weatherapp5.weatherdetail.entity.WeatherEntity
+import retrofit2.Call
 
 interface CurrentWeatherMVP {
 
@@ -12,11 +14,9 @@ interface CurrentWeatherMVP {
     interface Presenter {
         fun setView(view: View)
         fun getWeatherEntity(city: String, weatherAPIService: WeatherAPIService)
-
-        fun displayWeatherEntity(weatherEntity: WeatherEntity)
     }
 
     interface Model {
-
+        fun getCurrentWeatherCall(city: String, weatherAPIService: WeatherAPIService) : Call<WeatherResult>
     }
 }

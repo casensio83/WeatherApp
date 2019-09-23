@@ -1,30 +1,34 @@
-package com.example.weatherapp5.weatherdetail
+package com.example.weatherapp5.weatherdetail.currentWeather
 
 import com.example.weatherapp5.http.WeatherAPIService
+import com.example.weatherapp5.weatherdetail.currentWeather.entity.WeatherResult
 import com.example.weatherapp5.weatherdetail.entity.WeatherEntity
-import com.example.weatherapp5.weatherdetail.entity.currentweather.WeatherResult
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-const val APP_ID = "c8342d806e1d8e4aca0b12be0318fe5d"
 
-class CurrentWeatherPresenter : CurrentWeatherMVP.Presenter {
+class CurrentWeatherPresenter constructor(model: CurrentWeatherMVP.Model) : CurrentWeatherMVP.Presenter {
 
     private var view: CurrentWeatherMVP.View? = null
     private var weatherEntity: WeatherEntity? = null
+    private var model: CurrentWeatherMVP.Model
+
+    init {
+        this.model = model
+    }
 
     override fun setView(view: CurrentWeatherMVP.View) {
         this.view = view
     }
 
     override fun getWeatherEntity(city: String, weatherAPIService: WeatherAPIService) {
-        val call = weatherAPIService.getWeather(APP_ID, city)
+        val currentWeatherCall = model.getCurrentWeatherCall(city, weatherAPIService)
 
-        call.enqueue(object : Callback<WeatherResult> {
+        currentWeatherCall.enqueue(object : Callback<WeatherResult> {
 
             override fun onResponse(call: Call<WeatherResult>, response: Response<WeatherResult>) {
-                weatherEntity = getWeatherentity(response)
+                weatherEntity = getWeatherEntity(response)
                 if (view != null) {
                     view!!.displayCurrentWeatherData(weatherEntity!!)
                 }
@@ -36,15 +40,16 @@ class CurrentWeatherPresenter : CurrentWeatherMVP.Presenter {
         })
     }
 
-    private fun getWeatherentity(response: Response<WeatherResult>): WeatherEntity? {
+    private fun getWeatherEntity(response: Response<WeatherResult>): WeatherEntity? {
         val body = response.body()
 
         if (body != null) {
+            val weather = body.weather?.get(0)
             val temperature = body.main?.temp
             val date = body.dt
-            val icon = body.weather?.get(0)?.icon
-            val description = body.weather?.get(0)?.description
-            val country = body.sys.country
+            val icon = weather?.icon
+            val description = weather?.description
+            val country = body.sys?.country
             val city = body.name
             return WeatherEntity(
                 city,
@@ -57,9 +62,5 @@ class CurrentWeatherPresenter : CurrentWeatherMVP.Presenter {
         }
 
         return null
-    }
-
-    override fun displayWeatherEntity(weatherEntity: WeatherEntity) {
-
     }
 }
