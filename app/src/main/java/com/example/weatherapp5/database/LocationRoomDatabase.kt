@@ -25,7 +25,6 @@ abstract class LocationRoomDatabase: RoomDatabase() {
                             context.applicationContext,
                             LocationRoomDatabase::class.java, "word_database"
                         )
-                            // Wipes and rebuilds instead of migrating if no Migration object.
                             .fallbackToDestructiveMigration()
                             .addCallback(sRoomDatabaseCallback)
                             .build()
@@ -37,16 +36,13 @@ abstract class LocationRoomDatabase: RoomDatabase() {
 
         /**
          * Override the onOpen method to populate the database.
-         * We clear the database every time it is created or opened.
          *
          */
         private val sRoomDatabaseCallback = object : RoomDatabase.Callback() {
 
             override fun onOpen(@NonNull db: SupportSQLiteDatabase) {
                 super.onOpen(db)
-                // If you want to keep the data through app restarts,
-                // comment out the following line.
-                PopulateDbAsync(DB_INSTANCE!!).execute()
+                //PopulateDbAsync(DB_INSTANCE!!).execute()
             }
         }
     }
