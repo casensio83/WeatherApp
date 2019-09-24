@@ -1,6 +1,10 @@
 package com.example.weatherapp5.weatherdetail.currentWeather
 
 import com.example.weatherapp5.http.WeatherAPIService
+import com.example.weatherapp5.weatherdetail.currentWeather.data.CurrentWeatherRepositoryImpl
+import com.example.weatherapp5.weatherdetail.currentWeather.domain.CurrentWeatherModel
+import com.example.weatherapp5.weatherdetail.currentWeather.domain.CurrentWeatherRepository
+import com.example.weatherapp5.weatherdetail.currentWeather.presentation.CurrentWeatherPresenter
 import dagger.Module
 import dagger.Provides
 
