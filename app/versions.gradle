@@ -2,6 +2,11 @@ ext {
     junit_version = '4.12'
     test_runner_version = '1.2.0'
     espresso_version = '3.2.0'
+    espresso_x_version = "3.1.1"
+    robolectric_version = "4.1"
+    android_x_version = "1.1.0"
+    android_x_junit = "1.1.1"
+    mockito_version = "2.28.2"
 
     roomVersion = '1.1.1'
 

@@ -3,6 +3,7 @@ package com.example.weatherapp5.weatherdetail
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.weatherapp5.R
 import com.example.weatherapp5.location.presentation.LocationAdapter
@@ -38,7 +39,7 @@ class WeatherDetailsActivity : AppCompatActivity(),
 
         adapter = ForecastAdapter(this)
         recyclerview_forecast.adapter = adapter
-        recyclerview_forecast.layoutManager = LinearLayoutManager(this)
+        recyclerview_forecast.layoutManager = LinearLayoutManager(this) as RecyclerView.LayoutManager?
 
         lookForCity = intent.getStringExtra(LocationAdapter.EXTRA_CITY_DETAILS)
         lookForCountry = intent.getStringExtra(LocationAdapter.EXTRA_COUNTRY_DETAILS)
