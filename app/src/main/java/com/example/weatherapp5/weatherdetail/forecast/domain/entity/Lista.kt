@@ -3,7 +3,7 @@ package com.example.weatherapp5.weatherdetail.forecast.domain.entity
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-class List {
+class Lista {
 
     @SerializedName("dt")
     @Expose
@@ -13,7 +13,7 @@ class List {
     var main: Main? = null
     @SerializedName("weather")
     @Expose
-    var weather: Weather? = null
+    var weather: List<Weather>? = null
     @SerializedName("clouds")
     @Expose
     var clouds: Clouds? = null

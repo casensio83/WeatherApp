@@ -4,6 +4,7 @@ import android.util.Log
 import com.example.weatherapp5.weatherdetail.WeatherEntity
 import com.example.weatherapp5.weatherdetail.forecast.ForecastMVP
 import com.example.weatherapp5.weatherdetail.forecast.domain.ForecastModel
+import com.example.weatherapp5.weatherdetail.forecast.domain.entity.ForecastResult
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,9 +22,9 @@ class ForecastPresenter(private var model: ForecastModel) :
     override fun getWeatherEntity(city: String) {
         val forecastCall = model.getForecastCall(city)
 
-        forecastCall.enqueue(object : Callback<Any> {
+        forecastCall.enqueue(object : Callback<ForecastResult> {
 
-            override fun onResponse(call: Call<Any>, response: Response<Any>) {
+            override fun onResponse(call: Call<ForecastResult>, response: Response<ForecastResult>) {
                 weatherEntity = getWeatherEntity(response)
 
                 if (view != null) {
@@ -31,22 +32,22 @@ class ForecastPresenter(private var model: ForecastModel) :
                 }
             }
 
-            override fun onFailure(call: Call<Any>, t: Throwable) {
+            override fun onFailure(call: Call<ForecastResult>, t: Throwable) {
                 Log.e(
                     ForecastPresenter::class.java.canonicalName,
-                    "An error ocurred when trying to retrieve forecast data: $t"
+                    "An error occurred when trying to retrieve forecast data: $t"
                 )
             }
         })
     }
 
-    private fun getWeatherEntity(response: Response<Any>): WeatherEntity? {
+    private fun getWeatherEntity(response: Response<ForecastResult>): WeatherEntity? {
         val body = response.body()
 
         if (body != null) {
 //            val weather = body.list?.weather
 //            val temperature = body.list?.main?.temp
-//            val date = body.list?.dt
+//            val date = body.list?.dt_text
 //            val icon = weather?.icon
 //            val description = weather?.description
 //            val country = body.city?.country

@@ -1,6 +1,7 @@
 package com.example.weatherapp5.weatherdetail.forecast
 
 import com.example.weatherapp5.weatherdetail.WeatherEntity
+import com.example.weatherapp5.weatherdetail.forecast.domain.entity.ForecastResult
 import retrofit2.Call
 
 interface ForecastMVP {
@@ -15,6 +16,6 @@ interface ForecastMVP {
     }
 
     interface Model {
-        fun getForecastCall(city: String): Call<Any>
+        fun getForecastCall(city: String): Call<ForecastResult>
     }
 }

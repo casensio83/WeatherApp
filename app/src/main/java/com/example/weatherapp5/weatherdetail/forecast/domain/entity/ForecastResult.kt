@@ -16,7 +16,7 @@ class ForecastResult {
     var cnt: Int? = null
     @SerializedName("list")
     @Expose
-    var list: List? = null
+    var list: List<Lista>? = null
     @SerializedName("city")
     @Expose
     var city: City? = null
