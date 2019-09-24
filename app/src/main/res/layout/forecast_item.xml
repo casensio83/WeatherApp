@@ -20,7 +20,7 @@
             android:id="@+id/tv_current_temperature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:layout_marginEnd="8dp"
             tools:text="@string/temperature_hint"
             app:layout_constraintEnd_toEndOf="parent"
