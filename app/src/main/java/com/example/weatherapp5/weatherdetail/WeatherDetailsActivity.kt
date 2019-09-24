@@ -9,6 +9,7 @@ import com.example.weatherapp5.root.App
 import com.example.weatherapp5.weatherdetail.currentWeather.CurrentWeatherMVP
 import com.example.weatherapp5.weatherdetail.forecast.ForecastMVP
 import kotlinx.android.synthetic.main.activity_weather_details.*
+import java.util.*
 import javax.inject.Inject
 
 const val ICON_ENDPOINT = "http://openweathermap.org/img/wn/"
@@ -49,6 +50,7 @@ class WeatherDetailsActivity : AppCompatActivity(),
         tv_current_city.text = weatherEntity.city
         tv_current_country.text = "(" + weatherEntity.country + ")"
         tv_current_description.text = weatherEntity.description
+        tv_current_date.text = weatherEntity.date
 
         Glide.with(this)
             .load(ICON_ENDPOINT + weatherEntity.icon + ICON_FORMAT)

@@ -5,4 +5,7 @@
     <string name="new_location_button">add</string>
     <string name="city_name_hint">enter city name</string>
     <string name="country_name_hint">enter country name</string>
+    <string name="date_hint">Tue, Sep 24, 2019</string>
+    <string name="temperature_hint">25º</string>
+    <string name="description_hint">bla bla bla</string>
 </resources>
