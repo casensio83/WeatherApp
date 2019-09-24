@@ -1,4 +1,4 @@
-package com.example.weatherapp5.location
+package com.example.weatherapp5.location.presentation
 
 import android.app.Activity
 import android.content.Intent

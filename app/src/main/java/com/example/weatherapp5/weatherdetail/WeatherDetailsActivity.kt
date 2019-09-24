@@ -2,14 +2,16 @@ package com.example.weatherapp5.weatherdetail
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.weatherapp5.R
-import com.example.weatherapp5.location.LocationAdapter
+import com.example.weatherapp5.location.presentation.LocationAdapter
 import com.example.weatherapp5.root.App
 import com.example.weatherapp5.weatherdetail.currentWeather.CurrentWeatherMVP
 import com.example.weatherapp5.weatherdetail.forecast.ForecastMVP
+import com.example.weatherapp5.weatherdetail.forecast.domain.entity.ForecastObject
+import com.example.weatherapp5.weatherdetail.forecast.presentation.ForecastAdapter
 import kotlinx.android.synthetic.main.activity_weather_details.*
-import java.util.*
 import javax.inject.Inject
 
 const val ICON_ENDPOINT = "http://openweathermap.org/img/wn/"
@@ -26,12 +28,17 @@ class WeatherDetailsActivity : AppCompatActivity(),
 
     private lateinit var lookForCity: String
     private lateinit var lookForCountry: String
+    private lateinit var adapter: ForecastAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_weather_details)
 
         (application as App).getComponent().inject(this)
+
+        adapter = ForecastAdapter(this)
+        recyclerview_forecast.adapter = adapter
+        recyclerview_forecast.layoutManager = LinearLayoutManager(this)
 
         lookForCity = intent.getStringExtra(LocationAdapter.EXTRA_CITY_DETAILS)
         lookForCountry = intent.getStringExtra(LocationAdapter.EXTRA_COUNTRY_DETAILS)
@@ -41,8 +48,9 @@ class WeatherDetailsActivity : AppCompatActivity(),
     override fun onResume() {
         super.onResume()
         presenter.setView(this)
+        forecastPresenter.setView(this)
         presenter.getWeatherEntity(lookForCity)
-        forecastPresenter.getWeatherEntity(lookForCity)
+        forecastPresenter.getWeatherEntities(lookForCity)
     }
 
     override fun displayCurrentWeatherData(weatherEntity: WeatherEntity) {
@@ -57,8 +65,8 @@ class WeatherDetailsActivity : AppCompatActivity(),
             .into(iv_current_icon)
     }
 
-    override fun displayForecastData(weatherEntity: WeatherEntity) {
-        tv_forecast_city.text = weatherEntity.city.toString()
+    override fun displayForecastData(weatherEntities: List<ForecastObject>) {
+        adapter.setWeatherEntities(weatherEntities)
     }
 
 }

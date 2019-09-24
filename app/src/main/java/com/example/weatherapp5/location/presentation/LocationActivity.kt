@@ -1,4 +1,4 @@
-package com.example.weatherapp5.location
+package com.example.weatherapp5.location.presentation
 
 import android.app.Activity
 import android.content.Intent
@@ -7,8 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapp5.R
 import com.example.weatherapp5.database.LocationEntity
+import com.example.weatherapp5.location.LocationViewModel
 import kotlinx.android.synthetic.main.activity_location.*
 import kotlinx.android.synthetic.main.content_location.*
 
@@ -25,7 +27,7 @@ class LocationActivity : AppCompatActivity() {
 
         adapter = LocationAdapter(this)
         recyclerview_locations.adapter = adapter
-        recyclerview_locations.layoutManager = LinearLayoutManager(this)
+        recyclerview_locations.layoutManager = LinearLayoutManager(this) as RecyclerView.LayoutManager?
 
         locationViewModel = ViewModelProviders.of(this).get(LocationViewModel::class.java)
         locationViewModel.getLocations().observe(this,
