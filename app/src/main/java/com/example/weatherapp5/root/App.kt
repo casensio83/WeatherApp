@@ -5,7 +5,7 @@ import com.example.weatherapp5.weatherdetail.currentWeather.CurrentWeatherModule
 import com.example.weatherapp5.weatherdetail.currentWeather.domain.entity.WeatherApiServiceModule
 import com.example.weatherapp5.weatherdetail.forecast.ForecastModule
 
-class App: Application() {
+class App : Application() {
 
     private lateinit var component: ApplicationComponent
 

@@ -2,9 +2,9 @@ package com.example.weatherapp5.location
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import androidx.appcompat.app.AppCompatActivity
 import com.example.weatherapp5.R
 import kotlinx.android.synthetic.main.activity_new_location.*
 

@@ -6,7 +6,7 @@ import retrofit2.Call
 
 const val APP_ID = "c8342d806e1d8e4aca0b12be0318fe5d"
 
-class ForecastRepositoryImpl(private val weatherApiService: WeatherAPIService):
+class ForecastRepositoryImpl(private val weatherApiService: WeatherAPIService) :
     ForecastRepository {
 
     override fun getForecastWeather(appId: String, city: String): Call<Any> {

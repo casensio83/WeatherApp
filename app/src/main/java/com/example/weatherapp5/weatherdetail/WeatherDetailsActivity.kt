@@ -3,7 +3,6 @@ package com.example.weatherapp5.weatherdetail
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.weatherapp5.R
-import com.example.weatherapp5.http.WeatherAPIService
 import com.example.weatherapp5.location.LocationAdapter
 import com.example.weatherapp5.root.App
 import com.example.weatherapp5.weatherdetail.currentWeather.CurrentWeatherMVP
@@ -13,9 +12,6 @@ import javax.inject.Inject
 
 class WeatherDetailsActivity : AppCompatActivity(),
     CurrentWeatherMVP.View, ForecastMVP.View {
-
-    @Inject
-    lateinit var weatherAPI: WeatherAPIService
 
     @Inject
     lateinit var presenter: CurrentWeatherMVP.Presenter
@@ -40,8 +36,8 @@ class WeatherDetailsActivity : AppCompatActivity(),
     override fun onResume() {
         super.onResume()
         presenter.setView(this)
-        presenter.getWeatherEntity(lookForCity, weatherAPI)
-        forecastPresenter.getWeatherEntity(lookForCity, weatherAPI)
+        presenter.getWeatherEntity(lookForCity)
+        forecastPresenter.getWeatherEntity(lookForCity)
     }
 
     override fun displayCurrentWeatherData(weatherEntity: WeatherEntity) {

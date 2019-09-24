@@ -1,9 +1,9 @@
 package com.example.weatherapp5.weatherdetail.currentWeather.presentation
 
-import com.example.weatherapp5.http.WeatherAPIService
-import com.example.weatherapp5.weatherdetail.currentWeather.domain.entity.WeatherResult
+import android.util.Log
 import com.example.weatherapp5.weatherdetail.WeatherEntity
 import com.example.weatherapp5.weatherdetail.currentWeather.CurrentWeatherMVP
+import com.example.weatherapp5.weatherdetail.currentWeather.domain.entity.WeatherResult
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,8 +19,8 @@ class CurrentWeatherPresenter constructor(private var model: CurrentWeatherMVP.M
         this.view = view
     }
 
-    override fun getWeatherEntity(city: String, weatherAPIService: WeatherAPIService) {
-        val currentWeatherCall = model.getCurrentWeatherCall(city, weatherAPIService)
+    override fun getWeatherEntity(city: String) {
+        val currentWeatherCall = model.getCurrentWeatherCall(city)
 
         currentWeatherCall.enqueue(object : Callback<WeatherResult> {
 
@@ -32,7 +32,10 @@ class CurrentWeatherPresenter constructor(private var model: CurrentWeatherMVP.M
             }
 
             override fun onFailure(call: Call<WeatherResult>, t: Throwable) {
-
+                Log.e(
+                    CurrentWeatherPresenter::class.java.canonicalName,
+                    "An error ocurred when trying to retrieve current weather data: $t"
+                )
             }
         })
     }

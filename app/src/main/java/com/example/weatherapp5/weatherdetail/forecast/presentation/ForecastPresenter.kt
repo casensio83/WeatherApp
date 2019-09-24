@@ -1,6 +1,6 @@
 package com.example.weatherapp5.weatherdetail.forecast.presentation
 
-import com.example.weatherapp5.http.WeatherAPIService
+import android.util.Log
 import com.example.weatherapp5.weatherdetail.WeatherEntity
 import com.example.weatherapp5.weatherdetail.forecast.ForecastMVP
 import com.example.weatherapp5.weatherdetail.forecast.domain.ForecastModel
@@ -18,8 +18,8 @@ class ForecastPresenter(private var model: ForecastModel) :
         this.view = view
     }
 
-    override fun getWeatherEntity(city: String, weatherAPIService: WeatherAPIService) {
-        val forecastCall = model.getForecastCall(city, weatherAPIService)
+    override fun getWeatherEntity(city: String) {
+        val forecastCall = model.getForecastCall(city)
 
         forecastCall.enqueue(object : Callback<Any> {
 
@@ -32,7 +32,10 @@ class ForecastPresenter(private var model: ForecastModel) :
             }
 
             override fun onFailure(call: Call<Any>, t: Throwable) {
-                val saludo = ""
+                Log.e(
+                    ForecastPresenter::class.java.canonicalName,
+                    "An error ocurred when trying to retrieve forecast data: $t"
+                )
             }
         })
     }

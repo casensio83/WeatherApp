@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 
 @Database(entities = [LocationEntity::class], version = 1, exportSchema = false)
-abstract class LocationRoomDatabase: RoomDatabase() {
+abstract class LocationRoomDatabase : RoomDatabase() {
 
     abstract fun locationDao(): LocationDao
 

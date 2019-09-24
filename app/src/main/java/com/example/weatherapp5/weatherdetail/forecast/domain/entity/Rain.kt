@@ -7,6 +7,6 @@ class Rain {
 
     @SerializedName("3h")
     @Expose
-    var threeH :Double? = null
+    var threeH: Double? = null
 
 }
