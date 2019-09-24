@@ -10,4 +10,7 @@ interface WeatherAPIService {
     @GET("weather")
     fun getCurrentWeather(@Query("appid") appId: String, @Query("q") city: String): Call<WeatherResult>
 
+    @GET("forecast")
+    fun getForecastWeather(@Query("appid") appId: String, @Query("q") city: String): Call<Any>
+
 }

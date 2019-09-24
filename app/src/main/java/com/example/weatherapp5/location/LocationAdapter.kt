@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapp4.database.LocationEntity
 import com.example.weatherapp5.R
-import com.example.weatherapp5.weatherdetail.currentWeather.WeatherDetailsActivity
+import com.example.weatherapp5.weatherdetail.WeatherDetailsActivity
 import kotlinx.android.synthetic.main.location_item.view.*
 import java.util.*
 
