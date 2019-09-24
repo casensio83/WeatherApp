@@ -1,4 +1,4 @@
-package com.example.weatherapp.root
+package com.example.weatherapp5.root
 
 import android.app.Application
 import android.content.Context
@@ -7,13 +7,7 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class ApplicationModule(application: Application) {
-
-    var application: Application
-
-    init {
-        this.application = application
-    }
+class ApplicationModule(private var application: Application) {
 
     @Provides
     @Singleton

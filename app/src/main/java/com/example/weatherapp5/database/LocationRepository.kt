@@ -1,4 +1,4 @@
-package com.example.weatherapp4.database
+package com.example.weatherapp5.database
 
 import android.app.Application
 import android.os.AsyncTask
@@ -23,10 +23,10 @@ class LocationRepository(application: Application) {
     }
 
     fun insert(locationEntity: LocationEntity) {
-        insertAsyncTask(locationDao).execute(locationEntity)
+        InsertAsyncTask(locationDao).execute(locationEntity)
     }
 
-    private class insertAsyncTask internal constructor(private val mAsyncTaskDao: LocationDao) :
+    private class InsertAsyncTask internal constructor(private val mAsyncTaskDao: LocationDao) :
         AsyncTask<LocationEntity, Void, Void>() {
 
         override fun doInBackground(vararg params: LocationEntity): Void? {

@@ -8,15 +8,10 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class CurrentWeatherPresenter constructor(model: CurrentWeatherMVP.Model) : CurrentWeatherMVP.Presenter {
+class CurrentWeatherPresenter constructor(private var model: CurrentWeatherMVP.Model) : CurrentWeatherMVP.Presenter {
 
     private var view: CurrentWeatherMVP.View? = null
     private var weatherEntity: WeatherEntity? = null
-    private var model: CurrentWeatherMVP.Model
-
-    init {
-        this.model = model
-    }
 
     override fun setView(view: CurrentWeatherMVP.View) {
         this.view = view

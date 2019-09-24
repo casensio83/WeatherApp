@@ -2,10 +2,10 @@ package com.example.weatherapp5.weatherdetail
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.weatherapp.root.App
-import com.example.weatherapp4.home.LocationAdapter
 import com.example.weatherapp5.R
 import com.example.weatherapp5.http.WeatherAPIService
+import com.example.weatherapp5.location.LocationAdapter
+import com.example.weatherapp5.root.App
 import com.example.weatherapp5.weatherdetail.currentWeather.CurrentWeatherMVP
 import com.example.weatherapp5.weatherdetail.forecast.ForecastMVP
 import kotlinx.android.synthetic.main.activity_weather_details.*

@@ -3,14 +3,13 @@ package com.example.weatherapp5.location
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import com.example.weatherapp4.database.LocationEntity
-import com.example.weatherapp4.database.LocationRepository
+import com.example.weatherapp5.database.LocationEntity
+import com.example.weatherapp5.database.LocationRepository
 
 open class LocationViewModel constructor(application: Application) : AndroidViewModel(application) {
 
     private var repository: LocationRepository = LocationRepository(application)
     private var locations: LiveData<List<LocationEntity>>
-    private val app = application
 
     init {
         locations = repository.getLocations()

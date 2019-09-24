@@ -7,9 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.weatherapp4.database.LocationEntity
-import com.example.weatherapp4.home.LocationAdapter
 import com.example.weatherapp5.R
+import com.example.weatherapp5.database.LocationEntity
 import kotlinx.android.synthetic.main.activity_location.*
 import kotlinx.android.synthetic.main.content_location.*
 
@@ -30,9 +29,9 @@ class LocationActivity : AppCompatActivity() {
 
         locationViewModel = ViewModelProviders.of(this).get(LocationViewModel::class.java)
         locationViewModel.getLocations().observe(this,
-            Observer { locations -> adapter.setLocations(locations) })
+            Observer { locations -> adapter.setLocations(locations as List<LocationEntity>) })
 
-        fab.setOnClickListener { _ ->
+        fab.setOnClickListener {
             val intent = Intent(this, NewLocationActivity::class.java)
             startActivityForResult(intent, NEW_LOCATION_REQUEST_CODE)
         }

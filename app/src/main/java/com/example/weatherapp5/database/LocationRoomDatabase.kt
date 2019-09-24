@@ -1,4 +1,4 @@
-package com.example.weatherapp4.database
+package com.example.weatherapp5.database
 
 import android.content.Context
 import android.os.AsyncTask
@@ -8,13 +8,12 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 
-@Database(entities = arrayOf(LocationEntity::class), version = 1)
+@Database(entities = [LocationEntity::class], version = 1, exportSchema = false)
 abstract class LocationRoomDatabase: RoomDatabase() {
 
     abstract fun locationDao(): LocationDao
 
     companion object {
-        // marking the instance as volatile to ensure atomic access to the variable
         @Volatile
         var DB_INSTANCE: LocationRoomDatabase? = null
 
@@ -27,7 +26,6 @@ abstract class LocationRoomDatabase: RoomDatabase() {
                             LocationRoomDatabase::class.java, "word_database"
                         )
                             // Wipes and rebuilds instead of migrating if no Migration object.
-                            // Migration is not part of this codelab.
                             .fallbackToDestructiveMigration()
                             .addCallback(sRoomDatabaseCallback)
                             .build()
@@ -39,12 +37,10 @@ abstract class LocationRoomDatabase: RoomDatabase() {
 
         /**
          * Override the onOpen method to populate the database.
-         * For this sample, we clear the database every time it is created or opened.
+         * We clear the database every time it is created or opened.
          *
-         * If you want to populate the database only when the database is created for the 1st time,
-         * override RoomDatabase.Callback()#onCreate
          */
-        val sRoomDatabaseCallback = object : RoomDatabase.Callback() {
+        private val sRoomDatabaseCallback = object : RoomDatabase.Callback() {
 
             override fun onOpen(@NonNull db: SupportSQLiteDatabase) {
                 super.onOpen(db)
@@ -55,26 +51,17 @@ abstract class LocationRoomDatabase: RoomDatabase() {
         }
     }
 
-    /**
-     * Populate the database in the background.
-     * If you want to start with more words, just add them.
-     */
     private class PopulateDbAsync internal constructor(db: LocationRoomDatabase) : AsyncTask<Void, Void, Void>() {
 
-        private val mDao: LocationDao
-
-        init {
-            mDao = db.locationDao()
-        }
+        private val mDao: LocationDao = db.locationDao()
 
         override fun doInBackground(vararg params: Void): Void? {
             // Start the app with a clean database every time.
-            // Not needed if you only populate on creation.
             mDao.deleteAll()
 
-            var location = LocationEntity("Malaga", "Spain")
+            var location = LocationEntity("Tokyo", "Japan")
             mDao.insert(location)
-            location = LocationEntity("Valencia", "Spain")
+            location = LocationEntity("Barcelona", "Spain")
             mDao.insert(location)
             return null
         }

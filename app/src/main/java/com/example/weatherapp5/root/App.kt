@@ -1,4 +1,4 @@
-package com.example.weatherapp.root
+package com.example.weatherapp5.root
 
 import android.app.Application
 import com.example.weatherapp5.weatherdetail.currentWeather.CurrentWeatherModule
